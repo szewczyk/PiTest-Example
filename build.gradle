@@ -1,0 +1,73 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+        /**
+         * PiTest Gradle Plugin
+         */
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
+    }
+}
+
+/**
+ * PiTest Plugin Usage
+ */
+apply plugin: "info.solidsoft.pitest"
+
+/**
+ * PiTest Configuration
+ */
+pitest {
+    targetClasses = ['com.roche.*']
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    excludedMethods = ['hashCode', 'equals']
+    excludedClasses = ['com.roche.*IntegrationTest']
+    mutationThreshold = 90
+    coverageThreshold = 90
+    mutators = ['ALL']
+    // Default - Conditionals Boundary Mutator, Increments Mutator, Invert Negatives Mutator,
+    // Math Mutator, Negate Conditionals Mutator, Return Values Mutator, Void Method Calls Mutator
+
+    // deactivated - Constructor Calls Mutator, Inline Constant Mutator, Non Void Method Calls Mutator
+    // Remove Conditionals Mutator, Experimental Member Variable Mutator, Experimental Switch Mutator
+}
+
+
+
+
+
+
+
+
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'PiTestExample'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('nl.jqno.equalsverifier:equalsverifier:2.1.6')
+    testCompile('org.powermock:powermock-api-mockito:1.6.5')
+    testCompile('org.powermock:powermock-module-junit4:1.6.5')
+}
