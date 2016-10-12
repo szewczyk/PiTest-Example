@@ -16,7 +16,7 @@ public class WelcomeControllerTest {
     private final WelcomeService welcomeService = mock(WelcomeService.class);
     private WelcomeController welcomeController = new WelcomeController(welcomeService);
 
-/*    @Test
+    @Test
     public void welcomeMessageTest() {
         // given
         Person testUser = new Person("Mateusz", "Szewczyk", 18);
@@ -33,9 +33,9 @@ public class WelcomeControllerTest {
         verifyNoMoreInteractions(welcomeService);
 
         assertEquals(welcomeMessage, "Welcome<br/>Discount: 100");
-    }*/
+    }
 
-    @Test
+    /*@Test
     public void welcomeMessageGenericTest() {
         // given
         when(welcomeService.welcomeUser(any())).thenReturn("Welcome");
@@ -48,5 +48,5 @@ public class WelcomeControllerTest {
         verify(welcomeService, times(1)).welcomeUser(any());
         verify(welcomeService, times(1)).calculateDiscount(any());
         verifyNoMoreInteractions(welcomeService);
-    }
+    }*/
 }

@@ -18,7 +18,7 @@ public class PersonTest {
         Person subject = new Person(firstName, null, null);
 
         // then
-        //assertEquals(subject.getFirstname(), firstName);
+        assertEquals(subject.getFirstname(), firstName);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class PersonTest {
         Person subject = new Person(null, lastName, null);
 
         // then
-        //assertEquals(subject.getLastname(), lastName);
+        assertEquals(subject.getLastname(), lastName);
     }
 
     @Test
